@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Property:</strong>
+  <%= @property.name %>
+</p>
+
+<p>
+  <strong>Rent:</strong>
+  <%= @property.rent %>
+</p>
+
+<p>
+  <strong>Adress:</strong>
+  <%= @property.adress %>
+</p>
+
+<p>
+  <strong>Building age:</strong>
+  <%= @property.building %>
+</p>
+
+<p>
+  <strong>Remarks:</strong>
+  <%= @property.remarks %>
+</p>
+
+<% @property.stations.each_with_index do |r, i| %>
+<hr>
+<% if r.railway.present?  %>
+<h2>Nearest station <%= i+1 %></h2>
+<p>
+  <strong>Name of railway:</strong>
+  <%= r.railway %>
+</p>
+<p>
+  <strong>Station name:</strong>
+  <%= r.name %>
+</p>
+<p>
+  <strong>How many minutes walk:</strong>
+  <%= r.minutes %> min/mins
+</p>
+<% end %>
+<% end %>
+
+<%= link_to 'Edit', edit_property_path(@property) %> |
+<%= link_to 'Back', properties_path %>
